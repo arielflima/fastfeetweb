@@ -32,7 +32,7 @@ export default function RouteWrapper({
   );
 }
 
-RouteWrapper.default = {
+RouteWrapper.propTypes = {
   isPrivate: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
