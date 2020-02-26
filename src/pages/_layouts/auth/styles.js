@@ -28,19 +28,18 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     text-align: start;
-    margin: 30px;
+    margin: 44px 30px;
 
     input {
-      background: rgba(0, 0, 0, 0.1);
-      border: 0;
       border-radius: 4px;
       height: 44px;
       padding: 0 15px;
-      color: #fff;
       margin: 10px 0 10px;
+      border: 1px solid #dddddd;
+      color: #000;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 07);
+        color: #999;
       }
     }
 
