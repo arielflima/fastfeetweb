@@ -11,14 +11,13 @@ export default function Header() {
   return (
     <Container>
       <Content>
-        <img src={logo} alt="GymPoint" />
+        <img src={logo} alt="FastFeet" />
         <nav>
-          <Link to="/students">ALUNOS</Link>
-          <Link to="/students">PLANOS</Link>
-          <Link to="/students">MATRÍCULAS</Link>
-          <Link to="/students">PEDIDOS DE AUXÍLIO</Link>
+          <Link to="/students">ENCOMENDAS</Link>
+          <Link to="/students">ENTREGADORES</Link>
+          <Link to="/students">DESTINATÁRIOS</Link>
+          <Link to="/students">PROBLEMAS</Link>
         </nav>
-
         <aside>
           <Profile>
             <div>
