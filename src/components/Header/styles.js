@@ -47,7 +47,6 @@ export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
   padding-left: 20px;
-  border-left: 1px solid #ddd;
 
   div {
     text-align: right;
