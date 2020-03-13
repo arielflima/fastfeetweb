@@ -38,13 +38,13 @@ export default function Deliveries() {
         <tbody>
           {deliveries.map(delivery => (
             <tr key={delivery.id}>
+              <td className="startLine">{delivery.id}</td>
+              <td>{delivery.recipient.name}</td>
+              <td>{delivery.deliveryman.name}</td>
+              <td>{delivery.recipient.city}</td>
+              <td>{delivery.recipient.state}</td>
               <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
-              <td>{delivery.id}</td>
+              <td className="endLine">{delivery.id}</td>
             </tr>
           ))}
         </tbody>
