@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { Input } from '@rocketseat/unform';
 
 export const Container = styled.div`
   padding-top: 34px;
-  padding-left: 120px;
-  max-width: 600px;
   display: flex;
   flex-direction: column;
+  align-self: center;
 
   strong {
     color: #444;
@@ -54,7 +52,7 @@ export const Container = styled.div`
     display: flex;
     width: 1200px;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
   }
 
   .startLine {
@@ -68,24 +66,21 @@ export const Container = styled.div`
     margin-right: 25px;
     width: 10%;
   }
-`;
 
-export const InputStyled = styled(Input).attrs({
-  name: 'search',
-  type: 'text',
-  placeholder: `Busque por encomendas`,
-})`
-  height: 36px;
-  width: 237px;
-  text-align: center;
-  margin-top: 34px;
-  margin-bottom: 22px;
+  span {
+    margin-top: 16px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const Button = styled.button`
-  background-color: #fff;
-  color: #c6c6c6;
-  font-weight: bold;
+  background-color: #7d40e7;
+  color: #fff;
   border: none;
-  font-size: 24px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  font-size: 26px;
 `;

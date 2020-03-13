@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from 'react';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import api from '~/services/api';
 
-import { Container, InputStyled, Button } from './styles';
+import { Container, Button } from './styles';
 import RegisterButton from '~/components/RegisterButton';
+import InputStyled from '~/components/InputHeader';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadDeliveries() {
-      const response = await api.get('/delivery');
+      const response = await api.get('/delivery', {
+        params: {
+          page,
+        },
+      });
 
       setDeliveries(response.data);
     }
+
     loadDeliveries();
-  }, []);
+  }, [page]);
 
   return (
     <Container>
       <strong>Gerenciando Encomendas</strong>
       <p>
-        <InputStyled /> <RegisterButton />
+        <InputStyled
+          name="searchInput"
+          type="search"
+          placeholder="Busque por encomendas"
+        />
+        <RegisterButton />
       </p>
 
       <table>
@@ -49,6 +62,22 @@ export default function Deliveries() {
           ))}
         </tbody>
       </table>
+      <span>
+        <Button
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+          type="button"
+        >
+          <MdNavigateBefore />
+        </Button>
+        <Button
+          disabled={deliveries.length < 6}
+          type="button"
+          onClick={() => setPage(page + 1)}
+        >
+          <MdNavigateNext />
+        </Button>
+      </span>
     </Container>
   );
 }

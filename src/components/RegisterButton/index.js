@@ -1,7 +1,11 @@
 import React from 'react';
 
-import { Button } from './styles';
+import { Icon, Button } from './styles';
 
 export default function RegisterButton() {
-  return <Button type="button">+ CADASTRAR</Button>;
+  return (
+    <Button type="button">
+      <Icon /> CADASTRAR
+    </Button>
+  );
 }
