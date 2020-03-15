@@ -26,6 +26,13 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     white-space: pre-line;
+
+    img {
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      margin-right: 5px;
+    }
   }
 
   thead > tr > td {

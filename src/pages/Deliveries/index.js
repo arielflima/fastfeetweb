@@ -53,7 +53,13 @@ export default function Deliveries() {
             <tr key={delivery.id}>
               <td className="startLine">{delivery.id}</td>
               <td>{delivery.recipient.name}</td>
-              <td>{delivery.deliveryman.name}</td>
+              <td>
+                <img
+                  alt={delivery.deliveryman.name}
+                  src="https://api.adorable.io/avatars/40/abott@adorable.png"
+                />
+                {delivery.deliveryman.name}
+              </td>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
               <td>{delivery.id}</td>
