@@ -5,6 +5,7 @@ import api from '~/services/api';
 import { Container, Button } from './styles';
 import RegisterButton from '~/components/RegisterButton';
 import InputStyled from '~/components/InputHeader';
+import Status from './DeliveryStatus';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -62,7 +63,9 @@ export default function Deliveries() {
               </td>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
-              <td>{delivery.id}</td>
+              <td>
+                <Status text={delivery.status} />
+              </td>
               <td className="endLine">{delivery.id}</td>
             </tr>
           ))}

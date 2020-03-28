@@ -12,10 +12,9 @@ export const Container = styled.div`
   }
 
   table {
-    width: 1200px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
-    border-collapse: collapse;
   }
 
   td {
@@ -31,13 +30,18 @@ export const Container = styled.div`
       border-radius: 50%;
       width: 35px;
       height: 35px;
-      margin-right: 5px;
     }
   }
 
-  thead > tr > td {
-    font-weight: bold;
-    color: #444;
+  thead > tr {
+    height: 22px;
+    display: flex;
+    align-items: center;
+
+    td {
+      font-weight: bold;
+      color: #444;
+    }
   }
 
   tr {
@@ -57,7 +61,7 @@ export const Container = styled.div`
 
   p {
     display: flex;
-    width: 1200px;
+    max-width: 1200px;
     justify-content: space-between;
     align-items: center;
   }
