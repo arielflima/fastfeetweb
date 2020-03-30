@@ -1,40 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import {
-  MdNavigateBefore,
-  MdNavigateNext,
-  MdEdit,
-  MdDeleteForever,
-  MdRemoveRedEye,
-} from 'react-icons/md';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 
 import api from '~/services/api';
 
-import history from '~/services/history';
+// import history from '~/services/history';
 
-import { Container, Button, DetailContainer, RollBar } from './styles';
+import { Container, Button, RollBar } from './styles';
 import RegisterButton from '~/components/RegisterButton';
 import InputStyled from '~/components/InputHeader';
 
 import Status from './DeliveryStatus';
 import DetailButton from './DetailButton';
 
-import DeliveryModal from './Modal';
+// import DeliveryModal from './Modal';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [page, setPage] = useState(1);
 
+  async function loadDeliveries() {
+    const response = await api.get('/delivery', {
+      params: {
+        page,
+      },
+    });
+    setDeliveries(response.data);
+  }
+
   useEffect(() => {
-    async function loadDeliveries() {
-      const response = await api.get('/delivery', {
-        params: {
-          page,
-        },
-      });
-      setDeliveries(response.data);
-    }
     loadDeliveries();
-  }, [page]);
+  }, [page]); //eslint-disable-line
 
   return (
     <Container>
@@ -78,24 +73,10 @@ export default function Deliveries() {
                 <Status text={delivery.status} />
               </td>
               <td className="endLine">
-                <DetailButton>
-                  <DetailContainer>
-                    <div>
-                      <span>
-                        <MdRemoveRedEye color="#8E5BE8" size={15} />
-                        Visualizar
-                      </span>
-                      <span>
-                        <MdEdit color="#4D85EE" size={15} />
-                        Editar
-                      </span>
-                      <span>
-                        <MdDeleteForever color="#DE3B3B" size={15} />
-                        Excluir
-                      </span>
-                    </div>
-                  </DetailContainer>
-                </DetailButton>
+                <DetailButton
+                  loadDeliveries={loadDeliveries}
+                  id={delivery.id}
+                />
               </td>
             </tr>
           ))}
