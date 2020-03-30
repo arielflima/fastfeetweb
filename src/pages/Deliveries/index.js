@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import {
+  MdNavigateBefore,
+  MdNavigateNext,
+  MdEdit,
+  MdDeleteForever,
+  MdRemoveRedEye,
+} from 'react-icons/md';
+
 import api from '~/services/api';
 
-import { Container, Button } from './styles';
+import history from '~/services/history';
+
+import { Container, Button, DetailContainer, RollBar } from './styles';
 import RegisterButton from '~/components/RegisterButton';
 import InputStyled from '~/components/InputHeader';
+
 import Status from './DeliveryStatus';
+import DetailButton from './DetailButton';
+
+import DeliveryModal from './Modal';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -18,10 +31,8 @@ export default function Deliveries() {
           page,
         },
       });
-
       setDeliveries(response.data);
     }
-
     loadDeliveries();
   }, [page]);
 
@@ -66,12 +77,31 @@ export default function Deliveries() {
               <td>
                 <Status text={delivery.status} />
               </td>
-              <td className="endLine">{delivery.id}</td>
+              <td className="endLine">
+                <DetailButton>
+                  <DetailContainer>
+                    <div>
+                      <span>
+                        <MdRemoveRedEye color="#8E5BE8" size={15} />
+                        Visualizar
+                      </span>
+                      <span>
+                        <MdEdit color="#4D85EE" size={15} />
+                        Editar
+                      </span>
+                      <span>
+                        <MdDeleteForever color="#DE3B3B" size={15} />
+                        Excluir
+                      </span>
+                    </div>
+                  </DetailContainer>
+                </DetailButton>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <span>
+      <RollBar>
         <Button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
@@ -86,7 +116,7 @@ export default function Deliveries() {
         >
           <MdNavigateNext />
         </Button>
-      </span>
+      </RollBar>
     </Container>
   );
 }

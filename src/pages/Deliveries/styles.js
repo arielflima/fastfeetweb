@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  max-width: 100%;
+  max-height: 100%;
   padding-top: 34px;
   display: flex;
   flex-direction: column;
@@ -30,6 +32,7 @@ export const Container = styled.div`
       border-radius: 50%;
       width: 35px;
       height: 35px;
+      margin-right: 5px;
     }
   }
 
@@ -77,13 +80,6 @@ export const Container = styled.div`
     margin-right: 25px;
     width: 10%;
   }
-
-  span {
-    margin-top: 16px;
-    width: 1200px;
-    display: flex;
-    justify-content: space-between;
-  }
 `;
 
 export const Button = styled.button`
@@ -94,4 +90,49 @@ export const Button = styled.button`
   height: 26px;
   border: none;
   font-size: 26px;
+`;
+
+export const DetailContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    justify-content: start;
+
+    span:nth-last-child(2) {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  span {
+    padding: 0px;
+    margin: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    svg {
+      margin-right: 7px;
+      margin-left: 7px;
+    }
+  }
+`;
+
+export const RollBar = styled.div`
+    margin-top: 16px;
+    max-width: 100%;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
