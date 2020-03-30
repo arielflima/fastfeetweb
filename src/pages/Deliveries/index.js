@@ -73,10 +73,7 @@ export default function Deliveries() {
                 <Status text={delivery.status} />
               </td>
               <td className="endLine">
-                <DetailButton
-                  loadDeliveries={loadDeliveries}
-                  id={delivery.id}
-                />
+                <DetailButton loadDeliveries={loadDeliveries} data={delivery} />
               </td>
             </tr>
           ))}

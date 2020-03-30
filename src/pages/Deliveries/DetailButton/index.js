@@ -1,23 +1,19 @@
 import React from 'react';
-import {
-  MdMoreHoriz,
-  MdEdit,
-  MdDeleteForever,
-  MdRemoveRedEye,
-} from 'react-icons/md';
+import { MdMoreHoriz, MdEdit, MdDeleteForever } from 'react-icons/md';
 import Popup from 'reactjs-popup';
 
 import { toast } from 'react-toastify';
 
 import PropTypes from 'prop-types';
+import Modal from '../Modal';
 import api from '~/services/api';
 
 import { PopUpButton, DetailContainer } from './styles';
 
-export default function DetailButton({ loadDeliveries, id, ...rest }) {
+export default function DetailButton({ loadDeliveries, data, ...rest }) {
   async function handleDelete() {
     const confirm = window.confirm(
-      `Você tem certeza que deseja deletar entrega de ID:${id}?`
+      `Você tem certeza que deseja deletar entrega de ID:${data.id}?`
     );
 
     if (!confirm) {
@@ -26,11 +22,11 @@ export default function DetailButton({ loadDeliveries, id, ...rest }) {
     }
 
     try {
-      await api.delete(`/delivery/${id}`);
+      await api.delete(`/delivery/${data.id}`);
       loadDeliveries();
-      toast.success(`Encomenda ID:${id} apagada com sucesso!`);
+      toast.success(`Encomenda ID:${data.id} apagada com sucesso!`);
     } catch (err) {
-      toast.error(`Encomenda ID:${id} NÃO pode ser deletada!`);
+      toast.error(`Encomenda ID:${data.id} NÃO pode ser deletada!`);
     }
   }
 
@@ -51,12 +47,7 @@ export default function DetailButton({ loadDeliveries, id, ...rest }) {
     >
       <DetailContainer>
         <div>
-          <button onClick={handleDelete} type="button">
-            <span>
-              <MdRemoveRedEye color="#8E5BE8" size={15} />
-              Visualizar
-            </span>
-          </button>
+          <Modal data={data} />
           <button onClick={handleDelete} type="button">
             <span>
               <MdEdit color="#4D85EE" size={15} />
@@ -77,5 +68,19 @@ export default function DetailButton({ loadDeliveries, id, ...rest }) {
 
 DetailButton.propTypes = {
   loadDeliveries: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  data: PropTypes.shape({
+    id: PropTypes.number,
+    recipient_id: PropTypes.number,
+    deliveryman_id: PropTypes.number,
+    product: PropTypes.string,
+    recipient: PropTypes.shape({
+      name: PropTypes.string,
+      street: PropTypes.string,
+      number: PropTypes.number,
+      complement: PropTypes.string,
+      state: PropTypes.string,
+      city: PropTypes.string,
+      postalcode: PropTypes.number,
+    }),
+  }).isRequired,
 };
