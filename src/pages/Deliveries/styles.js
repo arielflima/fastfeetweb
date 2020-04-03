@@ -86,10 +86,16 @@ export const Button = styled.button`
   background-color: #7d40e7;
   color: #fff;
   border: none;
-  width: 26px;
-  height: 26px;
-  border: none;
-  font-size: 26px;
+  width: 112px;
+  height: 24px;
+
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const RollBar = styled.div`

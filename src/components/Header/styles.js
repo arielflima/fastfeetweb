@@ -48,6 +48,13 @@ export const Profile = styled.div`
   margin-left: 20px;
   padding-left: 20px;
 
+  button {
+    background: none;
+    border: none;
+    color: #de3b3b;
+    font-size: 14px;
+  }
+
   div {
     text-align: right;
 

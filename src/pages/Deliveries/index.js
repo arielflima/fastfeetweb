@@ -85,14 +85,15 @@ export default function Deliveries() {
           onClick={() => setPage(page - 1)}
           type="button"
         >
-          <MdNavigateBefore />
+          <MdNavigateBefore size={18} /> ANTERIOR
         </Button>
         <Button
           disabled={deliveries.length < 6}
           type="button"
           onClick={() => setPage(page + 1)}
         >
-          <MdNavigateNext />
+          PROXIMO
+          <MdNavigateNext size={18} />
         </Button>
       </RollBar>
     </Container>
