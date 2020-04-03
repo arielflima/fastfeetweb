@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';
 
 import PropTypes from 'prop-types';
+import history from '~/services/history';
 import Modal from '../Modal';
 import api from '~/services/api';
 
@@ -48,7 +49,10 @@ export default function DetailButton({ loadDeliveries, data, ...rest }) {
       <DetailContainer>
         <div>
           <Modal data={data} />
-          <button onClick={handleDelete} type="button">
+          <button
+            onClick={() => history.push(`/deliveries/editform/${data.id}`)}
+            type="button"
+          >
             <span>
               <MdEdit color="#4D85EE" size={15} />
               Editar
